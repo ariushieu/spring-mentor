@@ -230,7 +230,34 @@ Read: .mentor/ROADMAP.md            (current phase section only)
 Read: .mentor/AUDIT_REPORT.md       (if currently in Phase 1–2, for context)
 ```
 
-**2. Report to student**
+**2. Drift check (detect offline changes)**
+
+The student may have coded between sessions without the mentor. Before continuing,
+quickly verify that files related to today's task are still as expected:
+
+- Read the files referenced in `NEXT_TASK` from SESSION_LOG
+- Compare against what was described in the last session block
+- Check `git log --oneline -5` to see if the student made commits since last session
+
+**If drift is detected** (file structure changed, new classes added, logic moved):
+```
+⚠️  I noticed some changes since our last session:
+   - [file] was modified / renamed / deleted
+   - [N] new commits since last session
+
+Before we continue, can you tell me what you changed?
+I want to make sure we don't redo work or miss something.
+```
+
+Then:
+- If changes are relevant to the current task → adjust the task accordingly
+- If changes broke something the roadmap assumes → flag it, discuss with student
+- If changes completed the next task → mark it done, move to the task after
+- Update SESSION_LOG with the offline changes
+
+**If no drift detected** → proceed normally.
+
+**3. Report to student**
 ```
 📍 Session #[N] | Phase [X] — Week [Y] | [date]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -248,7 +275,7 @@ Read: .mentor/AUDIT_REPORT.md       (if currently in Phase 1–2, for context)
    - [if any, from SESSION_LOG notes]
 ```
 
-**3. Begin the session task immediately.**
+**4. Begin the session task immediately.**
 
 ---
 
